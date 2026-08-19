@@ -1,5 +1,5 @@
 const express = require('express');
-const connectDatabase = require('./config/db');
+const connectToDatabase = require('./config/db');
 
 const app = express();
 
@@ -13,7 +13,7 @@ app.use(async (req, res, next) => {
     try {
         if (!databaseReady) {
             if (!databasePromise) {
-                databasePromise = connectDatabase();
+                databasePromise = connectToDatabase();
             }
 
             await databasePromise;
